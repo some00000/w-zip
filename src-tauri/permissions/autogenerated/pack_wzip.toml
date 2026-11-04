@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-pack-wzip"
+description = "Enables the pack_wzip command without any pre-configured scope."
+commands.allow = ["pack_wzip"]
+
+[[permission]]
+identifier = "deny-pack-wzip"
+description = "Denies the pack_wzip command without any pre-configured scope."
+commands.deny = ["pack_wzip"]

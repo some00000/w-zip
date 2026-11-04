@@ -1,0 +1,25 @@
+[package]
+name = "w-zip"
+version = "0.1.0"
+description = "Zip files and seal them with Argon2id and AES-256-GCM"
+edition = "2021"
+rust-version = "1.90"
+publish = false
+
+[lib]
+name = "w_zip_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = "=2.7.4"
+
+[dependencies]
+aes-gcm = "=0.10.3"
+argon2 = "=0.5.3"
+rand = "=0.8.8"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tauri = "=2.12.5"
+tauri-plugin-dialog = "=2.8.4"
+zeroize = { version = "=1.8.2", default-features = false, features = ["alloc"] }
+zip = { version = "=2.6.1", default-features = false, features = ["deflate"] }

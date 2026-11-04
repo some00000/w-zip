@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>w+zip</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="mark">w+zip</p>
+        <h1>Seal a set of files.</h1>
+        <p class="lede">
+          The files are zipped, then encrypted with Argon2id and AES-256-GCM.
+          You get one <span class="ext">.wzip</span> file. The passphrase is not stored.
+        </p>
+      </header>
+
+      <div class="modes" role="tablist" aria-label="Archive action">
+        <button type="button" id="tab-seal" role="tab" aria-selected="true" aria-controls="panel-seal">
+          Seal
+        </button>
+        <button type="button" id="tab-open" role="tab" aria-selected="false" aria-controls="panel-open">
+          Open
+        </button>
+      </div>
+
+      <section id="panel-seal" role="tabpanel" aria-labelledby="tab-seal">
+        <div class="row">
+          <button type="button" id="add-files" class="secondary">Add files</button>
+          <p class="hint" id="file-count">No files yet.</p>
+        </div>
+        <ul id="file-list" class="file-list"></ul>
+
+        <label for="seal-password">Passphrase</label>
+        <input id="seal-password" type="password" autocomplete="new-password" />
+
+        <label for="seal-confirm">Confirm passphrase</label>
+        <input id="seal-confirm" type="password" autocomplete="new-password" />
+
+        <button type="button" id="seal" class="primary">Export .wzip</button>
+      </section>
+
+      <section id="panel-open" role="tabpanel" aria-labelledby="tab-open" hidden>
+        <div class="row">
+          <button type="button" id="choose-archive" class="secondary">Choose .wzip</button>
+        </div>
+        <p class="path" id="archive-path">No archive selected.</p>
+
+        <label for="open-password">Passphrase</label>
+        <input id="open-password" type="password" autocomplete="current-password" />
+
+        <div class="row">
+          <button type="button" id="choose-folder" class="secondary">Choose folder</button>
+        </div>
+        <p class="path" id="folder-path">Files will be extracted into the folder you choose.</p>
+
+        <button type="button" id="extract" class="primary">Extract files</button>
+      </section>
+
+      <p id="status" role="status"></p>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
