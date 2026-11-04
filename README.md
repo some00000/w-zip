@@ -18,6 +18,21 @@ On Linux the Tauri shell needs WebKitGTK 4.1 and the usual GTK build packages (`
 cargo test
 ```
 
+## Windows installer
+
+The Windows build uses Tauri's NSIS bundler. It produces a per-user installer named `w+zip_<version>_x64-setup.exe`. If WebView2 is missing, the installer downloads the Evergreen bootstrapper.
+
+On a Windows machine with Rust (1.90 or newer) and the Microsoft C++ build tools:
+
+```powershell
+cargo install tauri-cli --version 2.12.4 --locked
+cargo tauri build --bundles nsis
+```
+
+Run that from the repository root. The installer is written to `src-tauri/target/release/bundle/nsis/`. NSIS itself is fetched by the Tauri bundler; you do not install it separately. Windows 11 already includes the WebView2 runtime used to compile and smoke-test the app.
+
+GitHub Actions builds the same installer on `windows-latest` (`.github/workflows/windows-installer.yml`) for pull requests, pushes to `main`, tags named `v*`, and manual runs. Download `w-zip-windows-nsis` from the workflow run's artifacts. A `v*` tag also attaches the `.exe` to a GitHub Release.
+
 ## `.wzip` layout
 
 | Offset | Size | Field |
