@@ -29,7 +29,7 @@ cargo install tauri-cli --version 2.12.4 --locked
 cargo tauri build --bundles nsis
 ```
 
-Run that from the repository root. The installer is written to `src-tauri/target/release/bundle/nsis/`. NSIS itself is fetched by the Tauri bundler; you do not install it separately. Windows 11 already includes the WebView2 runtime used to compile and smoke-test the app.
+Run that from the repository root. This repo is a Cargo workspace, so the installer is written to `target/release/bundle/nsis/`, not under `src-tauri/`. NSIS itself is fetched by the Tauri bundler; you do not install it separately. Windows 11 already includes the WebView2 runtime used to compile and smoke-test the app.
 
 GitHub Actions builds the same installer on `windows-latest` (`.github/workflows/windows-installer.yml`) for pull requests, pushes to `main`, tags named `v*`, and manual runs. Download `w-zip-windows-nsis` from the workflow run's artifacts. A `v*` tag also attaches the `.exe` to a GitHub Release.
 
